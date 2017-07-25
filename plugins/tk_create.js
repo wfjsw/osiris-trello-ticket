@@ -115,7 +115,7 @@ async function processCreate(msg, result, bot) {
 }
 
 async function stageSelector(msg, type, bot) {
-    if (msg.text[0] = '/') return
+    if (msg.text[0] == '/') return
     if (msg.chat.id > 0 && checkLock(msg.from.id)) {
         const state = getState(msg.from.id)
         if (state['state'] == 'selectDepartment')
