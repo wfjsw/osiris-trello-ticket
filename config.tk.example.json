@@ -1,0 +1,9 @@
+{
+    "trello": {
+        "developer_key": "",
+        "auth_token": ""
+    },
+    "board": "",
+    "err_report": 0,
+    "webhook_port": 0
+}

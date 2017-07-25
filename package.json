@@ -1,0 +1,21 @@
+{
+  "name": "trello-ticket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "he": "^1.1.1",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
+  }
+}
