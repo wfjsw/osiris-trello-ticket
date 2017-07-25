@@ -20,7 +20,7 @@ async function listTickets(msg, bot) {
 }
 
 function listTicketsProcessor(msg, type, bot) {
-    if (msg.chat.id > 0 && !checkLock(msg.user.id))
+    if (msg.chat.id > 0 && !checkLock(msg.from.id))
         listTickets(msg, bot)
 }
     
