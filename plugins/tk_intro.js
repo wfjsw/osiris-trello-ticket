@@ -1,11 +1,11 @@
 function renderIntro() {
     return `欢迎使用 TGCN-通用工单系统
     
-    本工单系统将负责收集用户要求并追踪实现进度。
+本工单系统将负责收集用户要求并追踪实现进度。
     
-    /create - 提交新工单
-    /list - 获取全部活动的工单
-    /cancel - 恢复初始状态
+/create - 提交新工单
+/list - 获取全部活动的工单
+/cancel - 恢复初始状态
 `
 }
 
