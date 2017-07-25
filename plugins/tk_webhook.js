@@ -46,7 +46,7 @@ async function commentCardProcessor(req) {
     if (comment.indexOf('[ USER-INPUT ]') == 0) {
         // Notify Admin Here
     } else {
-        const message = `您的工单[ #${card.id} ]有新的进展\n部门: ${req.body.action.data.list.name}\n\n${comment}\n\n您可以直接回复此条消息来作出回应。`
+        const message = `您的工单 [ #${card.id} ] 有新的进展\n部门: ${req.body.action.data.list.name}\n\n${comment}\n\n您可以直接回复此条消息来作出回应。`
         return bot.sendMessage(user_id, message)
     }
 }
@@ -54,7 +54,7 @@ async function commentCardProcessor(req) {
 async function deptMigrationProcessor(req) {
     const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
     const target_dept = req.body.action.data.listAfter.name
-    const message = `您的工单[ #${req.body.action.data.card.id} ]已被移送至 "${target_dept}" 部门。`
+    const message = `您的工单 [ #${req.body.action.data.card.id} ] 已被移送至 "${target_dept}" 部门。`
     return bot.sendMessage(user_id, message)
 }
 
@@ -63,9 +63,9 @@ async function ticketCloseProcessor(req) {
     const card = req.body.action.data.card
     const closed = card.closed
     if (closed === true)
-        var message = `您的工单[ #${req.body.action.data.card.id} ]已被关闭。`
+        var message = `您的工单 [ #${req.body.action.data.card.id} ] 已被关闭。`
     else {
-        var message = `您的工单[ #${req.body.action.data.card.id} ]已被重新开启。`
+        var message = `您的工单 [ #${req.body.action.data.card.id} ] 已被重新开启。`
     }
     return bot.sendMessage(user_id, message)
 }
@@ -74,7 +74,7 @@ async function labelAddedProcessor(req) {
     const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
     const card = req.body.action.data.card
     const label = req.body.action.data.label.name
-    const message = `您的工单[ #${card.id} ]已被添加标签 ${label}。`
+    const message = `您的工单 [ #${card.id} ] 已被添加标签 ${label}。`
     return bot.sendMessage(user_id, message)
 }
 
@@ -82,7 +82,7 @@ async function labelRemovedProcessor(req) {
     const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
     const card = req.body.action.data.card
     const label = req.body.action.data.label.name
-    const message = `您的工单[ #${card.id} ]已被移除标签 ${label}。`
+    const message = `您的工单 [ #${card.id} ] 已被移除标签 ${label}。`
     return bot.sendMessage(user_id, message)
 }
 
