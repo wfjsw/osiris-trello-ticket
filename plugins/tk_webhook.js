@@ -4,7 +4,8 @@ const bodyParser = require('body-parser').json({
     strict: false
 })
 const {
-    webhook_port
+    webhook_port,
+    notification
 } = require('../config.tk.json')
 var bot
 
@@ -14,6 +15,9 @@ app.head('/mainHook', (req, res) => {
 /* eslint-disable indent*/
 app.post('/mainHook', bodyParser, (req, res) => {
     switch (req.body.action.type) {
+        case 'createCard':
+            createCardProcessor(req)
+            break
         case 'commentCard':
             commentCardProcessor(req)
             break
@@ -44,7 +48,8 @@ async function commentCardProcessor(req) {
     const card = req.body.action.data.card
     const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
     if (comment.indexOf('[ USER-INPUT ]') == 0) {
-        // Notify Admin Here
+        let message = `新用户追加\n${card.name}\n${req.body.action.data.list.name}\n\n${card.desc}\n\n------------\n\n${comment}`
+        return bot.sendMessage(notification, message)
     } else {
         const message = `您的工单 [ #${card.id} ] 有新的进展\n部门: ${req.body.action.data.list.name}\n\n${comment}\n\n您可以直接回复此条消息来作出回应。`
         return bot.sendMessage(user_id, message)
@@ -56,6 +61,11 @@ async function deptMigrationProcessor(req) {
     const target_dept = req.body.action.data.listAfter.name
     const message = `您的工单 [ #${req.body.action.data.card.id} ] 已被移送至 "${target_dept}" 部门。`
     return bot.sendMessage(user_id, message)
+}
+
+async function createCardProcessor(req) {
+    let message = `新工单\n${req.body.action.data.card.name}\n${req.body.action.data.list.name}\n\n${req.body.action.data.card.desc}`
+    return bot.sendMessage(notification, message)
 }
 
 async function ticketCloseProcessor(req) {
