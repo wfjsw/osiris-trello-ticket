@@ -48,7 +48,7 @@ async function commentCardProcessor(req) {
     const card = req.body.action.data.card
     const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
     if (comment.indexOf('[ USER-INPUT ]') == 0) {
-        let message = `新用户追加\n${card.name}\n${req.body.action.data.list.name}\n\n${card.desc}\n\n------------\n\n${comment}`
+        let message = `新用户追加\n${card.name}\n${req.body.action.data.list.name}\n\n------------\n\n${comment}`
         return bot.sendMessage(notification, message)
     } else {
         const message = `您的工单 [ #${card.id} ] 有新的进展\n部门: ${req.body.action.data.list.name}\n\n${comment}\n\n您可以直接回复此条消息来作出回应。`
@@ -64,7 +64,7 @@ async function deptMigrationProcessor(req) {
 }
 
 async function createCardProcessor(req) {
-    let message = `新工单\n${req.body.action.data.card.name}\n${req.body.action.data.list.name}\n\n${req.body.action.data.card.desc}`
+    let message = `新工单\n${req.body.action.data.card.name}\n${req.body.action.data.list.name}`
     return bot.sendMessage(notification, message)
 }
 
