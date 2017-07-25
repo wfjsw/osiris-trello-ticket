@@ -31,6 +31,6 @@ module.exports = exports = {
         _trello = _e.libs['tk_trello']
     },
     run: [
-        ['/list', listTicketsProcessor]
+        [/^\/list/, listTicketsProcessor]
     ]
 }
