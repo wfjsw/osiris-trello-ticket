@@ -46,7 +46,7 @@ app.listen(webhook_port)
 async function commentCardProcessor(req) {
     const comment = req.body.action.data.text
     const card = req.body.action.data.card
-    const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
+    const [user_id, username, language_code] = req.body.action.data.card.name.split('|')
     if (comment.indexOf('[ USER-INPUT ]') == 0) {
         let message = `新用户追加\n${card.name}\n${req.body.action.data.list.name}\n\n------------\n\n${comment}`
         return bot.sendMessage(notification, message)
@@ -57,7 +57,7 @@ async function commentCardProcessor(req) {
 }
 
 async function deptMigrationProcessor(req) {
-    const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
+    const [user_id, username, language_code] = req.body.action.data.card.name.split('|')
     const target_dept = req.body.action.data.listAfter.name
     const message = `您的工单 [ #${req.body.action.data.card.id} ] 已被移送至 "${target_dept}" 部门。`
     return bot.sendMessage(user_id, message)
@@ -69,7 +69,7 @@ async function createCardProcessor(req) {
 }
 
 async function ticketCloseProcessor(req) {
-    const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
+    const [user_id, username, language_code] = req.body.action.data.card.name.split('|')
     const card = req.body.action.data.card
     const closed = card.closed
     if (closed === true)
@@ -81,7 +81,7 @@ async function ticketCloseProcessor(req) {
 }
 
 async function labelAddedProcessor(req) {
-    const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
+    const [user_id, username, language_code] = req.body.action.data.card.name.split('|')
     const card = req.body.action.data.card
     const label = req.body.action.data.label.name
     const message = `您的工单 [ #${card.id} ] 已被添加标签 ${label}。`
@@ -89,7 +89,7 @@ async function labelAddedProcessor(req) {
 }
 
 async function labelRemovedProcessor(req) {
-    const [user_id, username, language_code] = req.body.action.data.card.name.split(' | ')
+    const [user_id, username, language_code] = req.body.action.data.card.name.split('|')
     const card = req.body.action.data.card
     const label = req.body.action.data.label.name
     const message = `您的工单 [ #${card.id} ] 已被移除标签 ${label}。`
