@@ -7,7 +7,7 @@ function checkLock(uid) {
 async function listTickets(msg, bot) {
     const { cards } = await _trello.listUserTicket(msg.from)
     let message = ''
-    if (cards.length = 0) {
+    if (cards.length == 0) {
         message = '当前您没有活跃的工单。'
     } else {
         cards.forEach(card => {
