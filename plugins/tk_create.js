@@ -66,7 +66,7 @@ async function stageII(msg, bot) {
             state: 'fillDescription',
             selected_department
         })
-        const message = '请简单描述您的问题：'
+        const message = '请简单描述您的问题（图片请使用图床外链）：'
         return await bot.sendMessage(msg.from.id, message, {
             reply_to_message_id: msg.message_id,
             reply_markup: {
