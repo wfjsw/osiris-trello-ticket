@@ -51,7 +51,7 @@ async function commentCardProcessor(req) {
         let message = `新用户追加\n${card.name}\n${req.body.action.data.list.name}\n\n------------\n\n${comment}`
         return bot.sendMessage(notification, message)
     } else {
-        const message = `您的工单 [ #${card.id} ] 有新的进展\n部门: ${req.body.action.data.list.name}\n\n${comment}\n\n您可以直接回复此条消息来作出回应。`
+        const message = `您的工单 [ #${card.id} ] 有新的进展\n部门: ${req.body.action.data.list.name}\n\n${comment}\n\n您可以直接回复此条消息来作出回应。（如何回复：轻触或右键此条消息选择 Reply。成功回复后您将收到一条回执。）`
         return bot.sendMessage(user_id, message)
     }
 }

@@ -98,7 +98,7 @@ async function stageIII(msg, bot) {
         name,
         url
     } = await _trello.createTicket(msg.from, selected_department, description)
-    const message = `已创建工单。\n\n工单编号: [ #${id} ]\n责任部门: ${cache_department[selected_department]}\n工单描述：\n${description}\n\n现在您可以回复此条消息以追加更多信息。\n小窍门：点击工单编号可以检索与该工单相关的所有消息。`
+    const message = `已创建工单。\n\n工单编号: [ #${id} ]\n责任部门: ${cache_department[selected_department]}\n工单描述：\n${description}\n\n现在您可以回复此条消息以追加更多信息。（如何回复：轻触或右键此条消息选择 Reply。成功回复后您将收到一条回执。）\n小窍门：点击工单编号可以检索与该工单相关的所有消息。`
     // Job is done. Let's purge state.
     setState(msg.from.id, false)
     setLock(msg.from.id, false)

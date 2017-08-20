@@ -5,6 +5,7 @@ function renderIntro() {
     
 /create - 提交新工单
 /list - 获取全部活动的工单
+/close - 关闭工单
 /cancel - 恢复初始状态
 `
 }
