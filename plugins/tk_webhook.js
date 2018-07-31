@@ -47,9 +47,13 @@ async function commentCardProcessor(req) {
     const comment = req.body.action.data.text
     const card = req.body.action.data.card
     const [user_id, username, language_code] = req.body.action.data.card.name.split('|')
-    if (comment.indexOf('[ USER-INPUT ]') == 0) {
+    if (comment.match('[ USER-INPUT ]')) {
         let message = `新用户追加\n${card.name}\n${req.body.action.data.list.name}\n\n------------\n\n${comment}`
         return bot.sendMessage(notification, message)
+    } else if (comment.match('[ USER-CLOSE ]')) {
+        //let message = `用户关闭\n${card.name}\n${req.body.action.data.list.name}\n\n------------\n\n${comment}`
+        //return bot.sendMessage(notification, message)
+        return
     } else {
         const message = `您的工单 [ #${card.id} ] 有新的进展\n部门: ${req.body.action.data.list.name}\n\n${comment}\n\n您可以直接回复此条消息来作出回应。（如何回复：轻触或右键此条消息选择 Reply。成功回复后您将收到一条回执。）`
         return bot.sendMessage(user_id, message)
